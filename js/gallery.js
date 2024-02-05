@@ -76,7 +76,7 @@ function galleryMarkUp(images) {
             <img
             class="gallery-image"
             src="${preview}"
-            data-Source="${original}"
+            data-source="${original}"
             alt="${description}"
             />
         </a>
@@ -90,10 +90,8 @@ container.addEventListener('click', (event) => {
     if (event.target === event.currentTarget) {
         return;
     }
-    const picture = event.target.closest('.gallery-image');
-    const pictureClicked = picture.dataset.source;
-
-    const {original,description} = images.find((image)=>image.original=pictureClicked);
+    const original = event.target.dataset.source;
+    const description = event.target.alt;
 
     basicLightbox.create(`
     <img src="${original}" alt="${description}" width="1112" height="640">
